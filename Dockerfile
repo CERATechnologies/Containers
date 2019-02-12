@@ -34,6 +34,8 @@ RUN chmod +x /usr/local/bin/chromedriver
 
 USER circleci
 
+RUN sudo npm install -g phantomjs@2.1.1 --unsafe-perm
+
 # have had issues installing ghostscript, now that they are resolved(?) we
 # should be able to add these to the previous apt-get install
 RUN sudo apt-get install -y ghostscript imagemagick
