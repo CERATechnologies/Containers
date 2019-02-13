@@ -32,10 +32,10 @@ RUN curl https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chrom
 RUN chown circleci:circleci /usr/local/bin/chromedriver
 RUN chmod +x /usr/local/bin/chromedriver
 
-USER circleci
+#USER circleci
 
-RUN sudo npm install -g phantomjs@2.1.1 --unsafe-perm
+RUN npm install -g phantomjs@2.1.1 --unsafe-perm
 
 # have had issues installing ghostscript, now that they are resolved(?) we
 # should be able to add these to the previous apt-get install
-RUN sudo apt-get install -y ghostscript imagemagick
+RUN apt-get install -y ghostscript imagemagick
