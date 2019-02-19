@@ -7,6 +7,10 @@ RUN sudo pip install --upgrade pip
 RUN sudo pip install awsebcli
 RUN sudo curl -o- -L https://yarnpkg.com/install.sh | bash
 
+# have had issues installing ghostscript, now that they are resolved(?) we
+# should be able to add these to the previous apt-get install
+RUN sudo apt-get install -y ghostscript imagemagick
+
 # CHROMEDRIVER
 USER root
 WORKDIR /
@@ -37,7 +41,3 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN yarn global add phantomjs-prebuilt
-
-# have had issues installing ghostscript, now that they are resolved(?) we
-# should be able to add these to the previous apt-get install
-RUN apt-get install -y ghostscript imagemagick
