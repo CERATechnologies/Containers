@@ -5,6 +5,7 @@ RUN sudo apt-get update -qq
 RUN sudo apt-get install -y build-essential postgresql-client python-pip python-dev libssl-dev
 RUN sudo pip install --upgrade pip
 RUN sudo pip install awsebcli
+RUN sudo curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # CHROMEDRIVER
 USER root
@@ -32,11 +33,10 @@ RUN curl https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chrom
 RUN chown circleci:circleci /usr/local/bin/chromedriver
 RUN chmod +x /usr/local/bin/chromedriver
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install yarn
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 
-RUN yarn global add phantomjs-prebuilt@2.1.16
+RUN yarn global add phantomjs-prebuilt
 
 # have had issues installing ghostscript, now that they are resolved(?) we
 # should be able to add these to the previous apt-get install
