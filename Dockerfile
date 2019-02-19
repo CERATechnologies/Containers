@@ -5,7 +5,6 @@ RUN sudo apt-get update -qq
 RUN sudo apt-get install -y build-essential postgresql-client python-pip python-dev libssl-dev
 RUN sudo pip install --upgrade pip
 RUN sudo pip install awsebcli
-RUN sudo curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # have had issues installing ghostscript, now that they are resolved(?) we
 # should be able to add these to the previous apt-get install
@@ -39,5 +38,7 @@ RUN chmod +x /usr/local/bin/chromedriver
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
+
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
 RUN yarn global add phantomjs-prebuilt
