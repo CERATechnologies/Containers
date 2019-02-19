@@ -40,6 +40,7 @@ RUN chmod +x /usr/local/bin/chromedriver
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN rm /usr/local/bin/yarn
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
 RUN yarn global add phantomjs-prebuilt
