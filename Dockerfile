@@ -1,9 +1,8 @@
-FROM circleci/ruby:2.3.7-stretch-node-browsers
+FROM circleci/ruby:2.3.8-stretch-node-browsers-legacy
 MAINTAINER developers <developers@oculo.com.au>
 
 RUN sudo apt-get update -qq
 RUN sudo apt-get install -y build-essential postgresql-client python-pip python-dev libssl-dev
-RUN sudo apt-get remove yarn
 RUN sudo pip install --upgrade pip
 RUN sudo pip install awsebcli
 
@@ -40,7 +39,7 @@ RUN chmod +x /usr/local/bin/chromedriver
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN rm /usr/local/bin/yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+#RUN rm /usr/local/bin/yarn
+#RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
-RUN $HOME/.yarn/bin/yarn global add phantomjs-prebuilt
+#RUN $HOME/.yarn/bin/yarn global add phantomjs-prebuilt
