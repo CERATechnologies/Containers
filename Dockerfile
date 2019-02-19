@@ -2,7 +2,7 @@ FROM circleci/ruby:2.3.7-stretch-node-browsers
 MAINTAINER developers <developers@oculo.com.au>
 
 RUN sudo apt-get update -qq
-RUN sudo apt-get install -y build-essential postgresql-client python-pip python-dev libssl-dev
+RUN sudo apt-get install -y build-essential postgresql-client python-pip python-dev libssl-dev yarn
 RUN sudo pip install --upgrade pip
 RUN sudo pip install awsebcli
 
